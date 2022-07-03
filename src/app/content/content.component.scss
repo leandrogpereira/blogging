@@ -1,0 +1,35 @@
+p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.sub-tittle {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #939393;
+}
+
+.avatar-1 {
+    background-image: url('../../assets/img/avatar1.jpg');
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.author-name {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+}
+
+.author-date {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #8A8A8A;
+}
