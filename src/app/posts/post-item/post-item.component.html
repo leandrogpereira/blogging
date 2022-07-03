@@ -1,0 +1,31 @@
+<div class="post mb-5 ps-4">
+    <div class="post-author" (click)="showDetail(comment)">
+        {{ comment.author.username }} - {{ comment.timestamp | localeDateTime }}
+    </div>
+    <div class="post-text">
+        {{ comment.content }}
+    </div>
+    <form [formGroup]="postForm" class="form" [class.was-validated]="submitted" (ngSubmit)="save(comment)" novalidate>
+        <input type="hidden" formControlName="respondsToid">
+        <div class="post-actions mb-4 d-flex justify-content-end">
+            <ng-container *ngIf="!comment.commenting; else commenting">
+                <button type="button" class="btn btn-danger btn-sm mr-btn">Reportar</button>
+                <button type="button" class="btn btn-success btn-sm mr-btn">Compartilhar</button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="showInput(comment)">Responder</button>
+            </ng-container>
+            <ng-template #commenting>
+                <button type="button" class="btn btn-secondary btn-sm mr-btn" (click)="hideInput(comment)">Cancelar</button>
+                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+            </ng-template>
+        </div>
+        <div *ngIf="comment.commenting" class="input-group mb-4">
+            <textarea class="form-control" placeholder="Digite aqui..." formControlName="text" required></textarea>
+            <div class="valid-feedback">Válido.</div>
+            <div class="invalid-feedback">Comentário inválido.</div>
+        </div>
+    </form>
+
+    <ng-container *ngFor="let post of onlyRespondsTo(comment.id)">
+        <app-post-item [author]="author" [comment]="post" [respondsToList]="filteredList"></app-post-item>
+    </ng-container>
+</div>

@@ -1,0 +1,9 @@
+<div class="post-tittle">
+    <h3>Comentários</h3>
+</div>
+
+<div class="mb-5">
+    <ng-container *ngFor="let comment of commentsList">
+        <app-post-item [author]="author" [comment]="comment" [respondsToList]="respondsToList"></app-post-item>
+    </ng-container>
+</div>
